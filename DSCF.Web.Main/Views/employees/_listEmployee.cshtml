@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DSCF.View.EmployeeViewModel>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dept_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            <button type="button" class="btn btn-success btn-edit" dataid="@item.id">Edit</button>
+            <button type="button" class="btn btn-success btn-detail" dataid="@item.id">Edit</button>
+            <button type="button" class="btn btn-success btn-delete" dataid="@item.id">Edit</button>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+        </td>
+    </tr>
+}
+<script type="text/javascript">
+    $(".btn-edit").click(function () {
+        debugger;
+        var tr = $(this).parents('tr:first');
+        tr.find('.edit-mode, .display-mode').toggle();
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("Edit", "employees")",
+            dataType: "html",
+            success: function (data) {
+                window.location.href = '/employees/Edit'
+            }
+        });
+    })
+    $(".btn-detail").click(function () {
+        debugger;
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("Details", "employees")",
+            dataType: "html",
+            success: function (data) {
+                window.location.href = '/employees/Details'
+            }
+        });
+    })
+    $(".btn-delete").click(function () {
+        debugger;
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("Delete", "employees")",
+            dataType: "html",
+            success: function (data) {
+                window.location.href = '/employees/Delete'
+            }
+        });
+    })
+
+</script>
+

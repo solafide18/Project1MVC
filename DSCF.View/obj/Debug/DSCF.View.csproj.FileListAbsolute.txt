@@ -1,0 +1,10 @@
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\bin\Debug\DSCF.View.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\bin\Debug\DSCF.View.pdb
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\obj\Debug\DSCF.View.csprojResolveAssemblyReference.cache
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\obj\Debug\DSCF.View.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\obj\Debug\DSCF.View.pdb
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\bin\Debug\DSCF.View.dll.config
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\bin\Debug\EntityFramework.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\bin\Debug\EntityFramework.SqlServer.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\bin\Debug\EntityFramework.xml
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.View\bin\Debug\EntityFramework.SqlServer.xml

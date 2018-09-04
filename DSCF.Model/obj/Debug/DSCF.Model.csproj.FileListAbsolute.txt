@@ -1,0 +1,10 @@
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\bin\Debug\DSCF.Model.dll.config
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\bin\Debug\DSCF.Model.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\bin\Debug\DSCF.Model.pdb
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\bin\Debug\EntityFramework.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\bin\Debug\EntityFramework.xml
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\obj\Debug\DSCF.Model.csprojResolveAssemblyReference.cache
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\obj\Debug\DSCF.Model.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Model\obj\Debug\DSCF.Model.pdb

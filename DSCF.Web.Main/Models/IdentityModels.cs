@@ -29,5 +29,7 @@ namespace DSCF.Web.Main.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<DSCF.View.EmployeeViewModel> EmployeeViewModels { get; set; }
     }
 }

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<DSCF.View.EmployeeViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="card">
+    <div class="card-body card-padding">
+        <div class="col-sm-4">
+            <div class="fg-line">
+                <input type="text" class="form-control" id="search-item" placeholder="Search" />
+            </div>
+        </div>
+        <div class="col-sm-offset-10">
+            <p>
+                <button id="btn-create" type="button" class="btn btn-primary btn-create">Create</button>
+                @*@Html.ActionLink("Create New", "Create")*@
+            </p>
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dept_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.active)
+                        </th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl-employee"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+    $(document).ready(function () {
+        listReload();
+
+        $("#search-item").keyup(function () {
+            var search = $(this).val();
+
+            if ($(this).val() == "" || $(this).val() == null) {
+                listReload();
+            }
+            else {
+                $("#tbl-employee").html("");
+
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("SearchEmployee", "employees")",
+                    data: { keywords: search }, //data yang akan dikirim
+                    dataType: "html",
+                    success: function (data) {
+                        $("#tbl-employee").html(data)
+                    }
+                });
+            }
+        });
+    });
+
+    function listReload() {
+        $.ajax({
+            url: "@Url.Action("ListEmployee", "employees")",
+            type: "GET",
+            success: function (result) {
+                $("#tbl-employee").html(result);
+            }
+        });
+    }
+    $("#btn-create").click(function () {
+        debugger;
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("Create", "employees")",
+            dataType: "html",
+            success: function (data) {
+                window.location.href = '/employees/Create'
+            }
+        });
+    })
+    </script>
+}

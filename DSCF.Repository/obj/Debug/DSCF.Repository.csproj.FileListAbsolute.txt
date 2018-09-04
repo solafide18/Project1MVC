@@ -1,0 +1,14 @@
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\DSCF.Repository.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\DSCF.Repository.pdb
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\obj\Debug\DSCF.Repository.csprojResolveAssemblyReference.cache
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\obj\Debug\DSCF.Repository.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\obj\Debug\DSCF.Repository.pdb
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\DSCF.Repository.dll.config
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\DSCF.Model.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\DSCF.View.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\EntityFramework.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\DSCF.Model.pdb
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\DSCF.View.pdb
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\EntityFramework.xml
+E:\Web\Web\DoingSomethingCodeFirst\DSCF\DSCF.Repository\bin\Debug\EntityFramework.SqlServer.xml
