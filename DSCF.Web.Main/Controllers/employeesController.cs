@@ -57,16 +57,15 @@ namespace DSCF.Web.Main.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EMP_ID,NAME,EMAIL,DEPT_ID,ACTIVE")] EMPLOYEE eMPLOYEE)
+        public ActionResult Create(EmployeeViewModel employee)
         {
             if (ModelState.IsValid)
             {
-                db.employees.Add(eMPLOYEE);
-                db.SaveChanges();
+                emp.SaveOrUpdate(employee);
                 return RedirectToAction("Index");
             }
 
-            return View(eMPLOYEE);
+            return View(employee);
         }
 
         // GET: employees/Edit/5
@@ -93,11 +92,9 @@ namespace DSCF.Web.Main.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                emp.SaveOrUpdate(employee);
             }
-            return View(employee);
+            return new EmptyResult();
         }
 
         // GET: employees/Delete/5

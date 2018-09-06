@@ -59,6 +59,34 @@ namespace DSCF.Repository
                     }).Where(x=>x.active==true).ToList();
             return list;
         }
-        //public void 
+        public void SaveOrUpdate(EmployeeViewModel model)
+        {
+            EMPLOYEE data = new EMPLOYEE();
+            data = db.employees.Find(model.id);
+            if(data == null)
+            {
+                data.EMP_ID = model.id;
+                data.NAME = model.name;
+                data.EMAIL = model.email;
+                data.DEPT_ID = model.dept_id;
+                data.ACTIVE = true;
+
+                db.employees.Add(data);
+                db.SaveChanges();
+            }
+            else
+            {
+                if (data.ACTIVE == false)
+                {
+                    data.NAME = model.name;
+                    data.EMAIL = model.email;
+                    data.DEPT_ID = model.dept_id;
+                    data.ACTIVE = true;
+
+                    db.Entry(data).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

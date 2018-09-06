@@ -3,25 +3,26 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="emp_id">
             @Html.DisplayFor(modelItem => item.id)
         </td>
-        <td>
+        <td class="emp_name">
             @Html.DisplayFor(modelItem => item.name)
         </td>
-        <td>
+        <td class="emp_email">
             @Html.DisplayFor(modelItem => item.email)
         </td>
-        <td>
+        <td class="dept_id">
             @Html.DisplayFor(modelItem => item.dept_id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.active)
         </td>
         <td>
-            <button type="button" class="btn btn-success btn-edit" dataid="@item.id">Edit</button>
-            <button type="button" class="btn btn-success btn-detail" dataid="@item.id">Edit</button>
-            <button type="button" class="btn btn-success btn-delete" dataid="@item.id">Edit</button>
+            @*<a class="Edit" href="javascript:;">Edit</a>*@
+            <button type="button" class="btn btn-success btn-edit" edit dataid="@item.id">Edit</button>
+            <button type="button" class="btn btn-info btn-detail" detail dataid="@item.id">Detail</button>
+            <button type="button" class="btn btn-danger btn-delete" delete dataid="@item.id">Delete</button>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
@@ -31,39 +32,94 @@
 <script type="text/javascript">
     $(".btn-edit").click(function () {
         debugger;
-        var tr = $(this).parents('tr:first');
-        tr.find('.edit-mode, .display-mode').toggle();
-        $.ajax({
-            type: "GET",
-            url: "@Url.Action("Edit", "employees")",
-            dataType: "html",
-            success: function (data) {
-                window.location.href = '/employees/Edit'
-            }
-        });
+        var row = $(this).closest('tr');
+        row.toggleClass('isediting'); // add a style to highlight the row
+        var isediting = row.hasClass('isediting');
+        $(this).parent('td').siblings('td').prop('contenteditable', isediting);
+        if (isediting) {
+            $(this).text('Ok');
+            $(this).siblings().addClass("hidden");
+            //$(this).siblings('button').find("btn-delete").addClass("hidden");
+        } else {
+            var employee = {};
+            employee.id = row.find(".emp_id").text().replace(/\s+/g, '');
+            employee.name = row.find(".emp_name").text().replace(/\s+/g, '');
+            employee.email = row.find(".emp_email").text().replace(/\s+/g, '');
+            employee.dept_id = row.find(".dept_id").text().replace(/\s+/g, '');
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Edit", "employees")",
+                data: '{ employee:'+JSON.stringify(employee)+ '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+            });
+
+            $(this).text('Edit');
+            $(this).siblings().removeClass('hidden');
+        }
     })
     $(".btn-detail").click(function () {
         debugger;
+        var Id = $(this).attr("dataid");
+        var idx = $(this).index();
+
         $.ajax({
             type: "GET",
             url: "@Url.Action("Details", "employees")",
+            data: { id: Id }, //data yang akan dikirim
             dataType: "html",
             success: function (data) {
-                window.location.href = '/employees/Details'
+                window.location.href = '/employees/Details/'+Id
             }
         });
     })
     $(".btn-delete").click(function () {
         debugger;
+        var Id = $(this).attr("dataid");
         $.ajax({
             type: "GET",
             url: "@Url.Action("Delete", "employees")",
+            data: { id: Id }, //data yang akan dikirim
             dataType: "html",
             success: function (data) {
-                window.location.href = '/employees/Delete'
+                window.location.href = '/employees/Delete/'+Id
             }
         });
     })
+    function AppendRow(row, id, name, email, dept_id) {
+        debugger;
+        //Bind Id.
+        $(".id", row).find("span").html(id);
+        $(".id", row).find("input").val(id);
 
+        //Bind Name.
+        $(".name", row).find("span").html(name);
+        $(".name", row).find("input").val(name);
+
+        //Bind Email.
+        $(".email", row).find("span").html(email);
+        $(".email", row).find("input").val(email);
+
+        //Bind Email.
+        $(".dept_id", row).find("span").html(dept_id);
+        $(".dept_id", row).find("input").val(dept_id);
+
+        row.find(".Edit").show();
+        row.find(".Delete").show();
+        $("#tbl-employee").append(row);
+    };
+    $("body").on("click", "#tbl-employee .Edit", function () {
+        debugger;
+        var row = $(this).closest('tr');
+        row.toggleClass('isediting'); // add a style to highlight the row
+        var isediting = row.hasClass('isediting');
+        $(this).parent('td').siblings('td').prop('contenteditable', isediting);
+        if (isediting) {
+            $(this).text('update');
+        } else {
+            $(this).text('edit');
+        }
+    });
 </script>
 
